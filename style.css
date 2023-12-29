@@ -1,0 +1,43 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 36px;
+}
+
+#calculator {
+    padding: 8px;
+    width: 10vw;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#screen {
+    text-align: right;
+    border: 1px solid black;
+    margin-bottom: 6px;
+    padding-right: 4px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.buttons-row {
+    display: flex;
+    gap: 2px;
+}
+
+button {
+    flex: 1;
+    font-size: 20px;
+}
