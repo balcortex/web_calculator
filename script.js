@@ -1,3 +1,4 @@
+const DECIMAL_PLACES = 4;
 const buttons = document.querySelectorAll("button");
 const screen = document.querySelector('div#screen');
 let numCur = '0';
@@ -27,7 +28,8 @@ function handleButton(e) {
       break;
 
     case 'eq':
-      screen.innerText = performOperation(+numMem, +numCur, operator);
+      let result = performOperation(+numMem, +numCur, operator);
+      screen.innerText = parseNumberScreen(result);
       numMem = screen.innerText;
       numCur = '0'; // clear the memory
       break;
@@ -45,4 +47,9 @@ function performOperation(num1, num2, operator) {
     default:
       return num1 + num2;
   }
+}
+
+function parseNumberScreen(number) {
+  if (Number.isInteger(number)) return number;
+  else return +number.toFixed(DECIMAL_PLACES);
 }
