@@ -1,8 +1,8 @@
 const DECIMAL_PLACES = 4;
 const buttons = document.querySelectorAll("button");
 const screen = document.querySelector('div#screen');
-let numCur = '0';
-let numMem = '0';
+let numCur = '';
+let numMem = '';
 let operator = '';
 
 buttons.forEach((button) =>
@@ -21,9 +21,16 @@ function handleButton(e) {
       screen.innerText = +numCur; // cast to Number (trim left zeros)
       break;
 
+    case 'dot':
+      if (!numCur.includes('.')) { // if there isn't a decimal point
+        numCur += '.';             // add one, else do nothing.
+        screen.innerText = numCur;
+      }
+      break;
+
     case 'op':
       numMem = screen.innerText; // save the current number on screen to memory
-      numCur = '0';  // clear the current number
+      numCur = '';  // clear the current number
       operator = value;
       break;
 
@@ -31,7 +38,7 @@ function handleButton(e) {
       let result = performOperation(+numMem, +numCur, operator);
       screen.innerText = parseNumberScreen(result);
       numMem = screen.innerText;
-      numCur = '0'; // clear the memory
+      numCur = ''; // clear the memory
       break;
   }
 }
