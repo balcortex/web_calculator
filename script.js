@@ -28,6 +28,23 @@ function handleButton(e) {
       }
       break;
 
+    case 'del':
+      numCur = numCur.slice(0, -1); // delete rightmost digit
+      if (numCur == '') numCur = '0'; // if empty, set to 0
+      screen.innerText = numCur;
+      break;
+
+    case 'c': // clear the screen only
+      numCur = '0';
+      screen.innerText = numCur;
+      break;
+
+    case 'ac': // clear memory and screen
+      numCur = '0';
+      numMem = '0';
+      screen.innerText = numCur;
+      break;
+
     case 'op':
       numMem = screen.innerText; // save the current number on screen to memory
       numCur = '';  // clear the current number
